@@ -111,7 +111,7 @@ test
 > После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне.
 
 <p align="center">
-<img title="Telegram Notifications" src="images/screens/telegram.png">
+<img title="Telegram Notifications" src="images/screens/Tele.png">
 </p>
 
 ## <img width="4%" title="Selenoid" src="images/logo/Selenoid.svg"> Пример запуска теста в Selenoid

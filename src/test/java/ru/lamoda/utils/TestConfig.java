@@ -25,7 +25,7 @@ public class TestConfig extends Attach{
         Configuration.browserSize = System.getProperty("browser_size");
         Configuration.browser = System.getProperty("browser_name");
         Configuration.browserVersion = System.getProperty("browser_version");
-        Configuration.remote = System.getProperty("remote");
+        Configuration.remote = System.getProperty("remote_selenoid");
     }
 
 

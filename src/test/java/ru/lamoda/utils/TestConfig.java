@@ -13,17 +13,24 @@ public class TestConfig extends Attach{
     static void configure() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        Configuration.baseUrl = "https://www.lamoda.ru/";
-        Configuration.browserSize = "1920x1080";
-        Configuration.browserPosition = "0x0";
-        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
 
+        Configuration.browserCapabilities = capabilities;
+        Configuration.baseUrl = "https://www.lamoda.ru/";
+        Configuration.baseUrl = "https://advantagesolutions.net/";
+        Configuration.browserSize = System.getProperty("browser_size");
+        Configuration.browser = System.getProperty("browser_name");
+        Configuration.browserVersion = System.getProperty("browser_version");
+        Configuration.remote = System.getProperty("remote");
     }
+
+
+
 
     @AfterEach
     void addAttachments() {

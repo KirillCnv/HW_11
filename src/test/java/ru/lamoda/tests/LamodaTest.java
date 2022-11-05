@@ -37,10 +37,10 @@ public class LamodaTest extends TestConfig {
         });
 
         step("Навести курсор на иконку региона", () -> {
-            $("._message_kn91o_11").click();
+            lamodaTestPage.buttonRegion();
         });
         step("Проверить, что открылось окно \"Выберите регион или город\"", () -> {
-            $("._rightCol_rq1gl_8").shouldHave(Condition.text("Где вы находитесь?"));
+            lamodaTestPage.examinationWindowRegion();
         });
 
     }
@@ -53,11 +53,11 @@ public class LamodaTest extends TestConfig {
             lamodaTestPage.openPage();
         });
         step("Проверить, что все элементы отоброжаются", () -> {
-            $("._root_1416b_2").shouldHave(Condition.text("Идеи"));
-            $("._root_1416b_2").shouldHave(Condition.text("Новинки"));
-            $("._root_1416b_2").shouldHave(Condition.text("Одежда"));
-            $("._root_1416b_2").shouldHave(Condition.text("Обувь"));
-            $("._root_1416b_2").shouldHave(Condition.text("Аксессуары"));
+            lamodaTestPage.elementsHeader("Идеи");
+            lamodaTestPage.elementsHeader("Новинки");
+            lamodaTestPage.elementsHeader("Одежда");
+            lamodaTestPage.elementsHeader("Обувь");
+            lamodaTestPage.elementsHeader("Аксессуары");
         });
     }
 
@@ -71,7 +71,7 @@ public class LamodaTest extends TestConfig {
         });
         step("Ввести {0}", () -> {
             lamodaTestPage.setValueSearch(testData);
-            $("button[class*=\"_button_xf7ng_11\"]").click();
+            lamodaTestPage.parameterizedClickButton();
         });
         step("Проверить результаты поиска", () -> {
             lamodaTestPage.checkResult(testData);
@@ -87,10 +87,10 @@ public class LamodaTest extends TestConfig {
             lamodaTestPage.openPage();
         });
         step("Кликнуть на кнопку \"Бесконтактная доставка  с примеркой\"", () -> {
-            $("img[src=\"//a.lmcdn.ru/bs2/8/97/24-px-usp-covid-19.svg\"]").click();
+            lamodaTestPage.buttonDelivery();
         });
         step("Проверить, что открылось окно \"Бесконтактная доставка  с примеркой\"", () -> {
-            $("div[field=\"tn_text_1584497896110\"]").shouldHave(Condition.text("Воспользуйтесь бесконтактной доставкой "));
+            lamodaTestPage.windowDelivery();
         });
     }
 
@@ -101,33 +101,33 @@ public class LamodaTest extends TestConfig {
             lamodaTestPage.openPage();
         });
         step("Кликнуть на кнопку \"Платите когда хотите!\"", () -> {
-            $("img[src=\"//a.lmcdn.ru/bs2/7/81/24-px-usp-any-pay1.svg\"]").click();
+            lamodaTestPage.buttonPay();
         });
         step("Проверить, что открылось окно \"Платитекогда хотите!\"", () -> {
-            $("div[field=\"tn_text_1587481758097\"]").shouldHave(Condition.text("Оплата \n онлайн"));
-            $("div[field=\"tn_text_1587481758109\"]").shouldHave(Condition.text("При получении заказа "));
-            $("div[field=\"tn_text_1587481758116\"]").shouldHave(Condition.text("Оплата частями "));
+            lamodaTestPage.windowPay("Оплата \n онлайн");
+            lamodaTestPage.windowPay("При получении заказа ");
+            lamodaTestPage.windowPay("Оплата частями");
         });
     }
 
-
-@DisplayName("Проверка страницы \"Платитекогда хотите!\"(FAIL)")
-@Disabled
-@Test
+    @DisplayName("Проверка страницы \"Платите когда хотите!\" FAIL ")
+    @Test
     void examinationPayFail() {
         step("Открыть главную страницу", () -> {
             lamodaTestPage.openPage();
         });
         step("Кликнуть на кнопку \"Платите когда хотите!\"", () -> {
-            $("img[src=\"//a.lmcdn.ru/bs2/7/81/24-px-usp-any-pay1.svg\"]").click();
+            lamodaTestPage.buttonPay();
         });
         step("Проверить, что открылось окно \"Платитекогда хотите!\"", () -> {
-            $("div[field=\"tn_text_1587481758097\"]").shouldHave(Condition.text("НЕ Оплата \n онлайн"));
-            $("div[field=\"tn_text_1587481758109\"]").shouldHave(Condition.text("НЕ При получении заказа "));
-            $("div[field=\"tn_text_1587481758116\"]").shouldHave(Condition.text("НЕ Оплата частями "));
+            lamodaTestPage.windowPay("Не Оплата \n онлайн");
+            lamodaTestPage.windowPay("Не получении заказа ");
+            lamodaTestPage.windowPay("Не Оплата частями");
         });
     }
 }
+
+
 
 
 

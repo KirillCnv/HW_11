@@ -22,7 +22,6 @@ public class TestConfig extends Attach{
 
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = "https://www.lamoda.ru/";
-        Configuration.baseUrl = "https://advantagesolutions.net/";
         Configuration.browserSize = System.getProperty("browser_size");
         Configuration.browser = System.getProperty("browser_name");
         Configuration.browserVersion = System.getProperty("browser_version");

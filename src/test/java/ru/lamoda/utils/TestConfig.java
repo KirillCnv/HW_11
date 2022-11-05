@@ -22,9 +22,9 @@ public class TestConfig extends Attach{
 
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = "https://www.lamoda.ru/";
-        Configuration.browserSize = System.getProperty("browser_size");
-        Configuration.browser = System.getProperty("browser_name");
-        Configuration.browserVersion = System.getProperty("browser_version");
+        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
+        Configuration.browser = System.getProperty("browser_name", "chrome");
+        Configuration.browserVersion = System.getProperty("browser_version", "106.0");
         Configuration.remote = System.getProperty("remote_selenoid");
     }
 

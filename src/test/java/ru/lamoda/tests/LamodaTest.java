@@ -104,7 +104,7 @@ public class LamodaTest extends TestConfig {
             lamodaTestPage.buttonPay();
         });
         step("Проверить, что открылось окно \"Платитекогда хотите!\"", () -> {
-            lamodaTestPage.windowPay("Оплата \n онлайн");
+            lamodaTestPage.windowPay("\"Оплата \n онлайн\"");
             lamodaTestPage.windowPay("При получении заказа ");
             lamodaTestPage.windowPay("Оплата частями");
         });

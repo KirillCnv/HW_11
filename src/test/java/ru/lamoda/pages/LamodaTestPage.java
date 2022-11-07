@@ -11,7 +11,7 @@ public class LamodaTestPage {
 
     private SelenideElement
             setValue = $("input[class*=\"_input_xf7ng_19 _inputShown_xf7ng_43\"]"),
-            checkResult = $("h2[class=\"_titleText_5tc8h_15 ui-catalog-search-head-title\"]");
+            checkResult = $("h2[class=\"_titleText_641wy_15 ui-catalog-search-head-title\"]");
 
 
     // Actions

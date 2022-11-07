@@ -8,7 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class TestConfig extends Attach{
+public class TestConfig extends Attach {
     @BeforeAll
     static void configure() {
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -26,9 +26,8 @@ public class TestConfig extends Attach{
         Configuration.browser = System.getProperty("browser_name");
         Configuration.browserVersion = System.getProperty("browser_version");
         Configuration.remote = System.getProperty("remote_selenide");
+
     }
-
-
 
 
     @AfterEach

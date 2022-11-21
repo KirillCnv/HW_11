@@ -73,13 +73,17 @@ test
 -Dselenide.remote=${REMOTE}
 ```
 
+<p align="center">
+<img title="Jenkins Overview" src="images/screens/jobJenkins.png">
+</p>
+
 ### :desktop_computer: Параметры сборки
 
 > <code>REMOTE_URL</code> – адрес удаленного сервера, на котором будут запускаться тесты.
 >
 > <code>BROWSER</code> – браузер, в котором будут выполняться тесты (_по умолчанию - <code>chrome</code>_).
 >
-> <code>BROWSER*VERSION</code> – версия браузера, в которой будут выполняться тесты (*по умолчанию - <code>91.0</code>\_).
+> <code>BROWSER*VERSION</code> – версия браузера, в которой будут выполняться тесты (*по умолчанию - <code>100</code>\_).
 >
 > <code>BROWSER*SIZE</code> – размер окна браузера, в котором будут выполняться тесты (*по умолчанию - <code>1920x1080</code>\_).
 

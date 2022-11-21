@@ -1,42 +1,55 @@
 package ru.lamoda.utils;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import ru.lamoda.helpers.Attach;
+import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import ru.lamoda.helpers.Attach;
+
 
 public class TestConfig extends Attach {
+
     @BeforeAll
+    @Step("Browser configuration")
     static void configure() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-
         Configuration.browserCapabilities = capabilities;
+        DriverProvider config = new DriverProvider();
+        config.setConfiguration();
         Configuration.baseUrl = "https://www.lamoda.ru/";
-        Configuration.browserSize = System.getProperty("browser_size");
-        Configuration.browser = System.getProperty("browser_name");
-        Configuration.browserVersion = System.getProperty("browser_version");
-        Configuration.remote = System.getProperty("remote_selenide");
 
+        if (DriverProvider.isRemote.equals("true")) {
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+        }
+    }
+
+    @BeforeEach
+    @Step("Adding Allure Listener")
+    void addAllureListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
 
     @AfterEach
+    @Step("Adding Attachments to Allure report")
     void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
+        Attach.screenshotAs("Screenshot");
+        if ((Configuration.browser).equals("chrome")) {
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+        }
+        if (DriverProvider.isRemote.equals("true")) {
+            Attach.addVideo();
+        }
+        WebDriverRunner.closeWebDriver();
     }
-
 
 }

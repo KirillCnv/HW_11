@@ -1,57 +1,94 @@
-
 plugins {
-    id 'java-library'
+    id 'java'
     id 'io.qameta.allure' version '2.10.0'
+    id "io.freefair.lombok" version '6.0.0-m2'
 }
 
-allure {
-    report {//секция репорта
-        version.set("2.19.0")
-    }
-    adapter { // создает папку allure-result
-        aspectjWeaver.set(true) // Обработка аннотаций
-        frameworks {
-            junit5 {
-                adapterVersion.set("2.19.0")
-            }
-        }
-    }
-}
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-compileJava {
-    options.encoding = 'UTF-8'
-}
-compileTestJava {
-    options.encoding = 'UTF-8'
-}
-
-def selenideVersion = "6.6.6",
+def allureVersion = "2.19.0",
+    selenideVersion = "6.9.0",
+    restAssuredVersion = "5.2.0",
+    appiumVersion = "8.2.0",
     junitVersion = "5.9.0",
-    slf4jVersion = "1.7.36",
-    javaFaker = "1.0.2"
+    commonsIoVersion = "2.11.0",
+    slf4jVersion = "2.0.3",
+    assertJVersion = "3.23.1",
+    jacksonVersion = "2.13.4.2",
+    ownerVersion = "1.0.12",
+    javaFakerVersion = "1.0.2",
+    jsoupVersion = "1.15.3"
 
+
+allure
+        {
+            report {
+                version.set(allureVersion)
+            }
+            adapter {
+                aspectjWeaver.set(true)
+                frameworks {
+                    junit5 {
+                        adapterVersion.set(allureVersion)
+                    }
+                }
+            }
+        }
 
 dependencies {
-    testImplementation(
-            "com.codeborne:selenide:$selenideVersion",
+    testImplementation("com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "org.assertj:assertj-core:$assertJVersion",
+            "io.appium:java-client:$appiumVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",
-            'io.qameta.allure:allure-selenide:2.19.0',
-            "com.github.javafaker:javafaker:$javaFaker"
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "commons-io:commons-io:$commonsIoVersion",
+            "com.github.javafaker:javafaker:$javaFakerVersion",
+            "org.jsoup:jsoup:$jsoupVersion"
     )
 }
 
-test {
-    useJUnitPlatform()
-    systemProperties(System.getProperties())
-}
-
-tasks.withType(JavaCompile) {
+compileTestJava {
     options.encoding = 'UTF-8'
 }
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(Test) {
+    systemProperty "file.encoding", "utf-8"
+    systemProperties(System.getProperties())
+    if (System.getProperty("threads") != null) {
+        systemProperties += [
+                'junit.jupiter.execution.parallel.enabled'                 : true,
+                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
+        ]
+    }
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 
 
+    test {
+        useJUnitPlatform()
+        systemProperties(System.getProperties())
+    }
+
+
+}

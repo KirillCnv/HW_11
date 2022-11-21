@@ -67,10 +67,12 @@ gradle clean test
 ```
 clean
 test
+-Dselenoid=true
+-Dos=remote
 -Dbrowser_name=${BROWSER_NAME}
--Dbrowser_size=${BROWSER_SIZE}
 -Dbrowser_version=${BROWSER_VERSION}
--Dselenide.remote=${REMOTE}
+-Dbrowser_size=${BROWSER_SIZE}
+-Dremote_selenide=${remote_selenide}
 ```
 
 <p align="center">

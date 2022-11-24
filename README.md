@@ -12,6 +12,8 @@
 >
 > ➠ [Уведомления в Telegram с использованием бота](#-уведомления-в-telegram-с-использованием-бота)
 >
+> ➠ [Интеграция с AllureTestOps](#Интеграция-с-[AllureTestOps])
+> 
 > ➠ [Пример запуска теста в Selenoid](#-пример-запуска-теста-в-selenoid)
 
 ## :tshirt: Покрытый функционал
@@ -62,7 +64,7 @@
 gradle clean test
 ```
 
-### :desktop_computer: Удаленный запуск тестов
+### :desktop_computer: Удаленный запуск тестов [Jenkins](https://jenkins.autotests.cloud/job/HW_11_jenkins/)
 
 ```
 clean
@@ -116,6 +118,19 @@ test
 
 <p align="center">
 <img title="Telegram Notifications" src="images/screens/Tele.png">
+</p>
+
+## Интеграция с [AllureTestOps](https://allure.autotests.cloud/project/1707/dashboards)
+
+### Тест-кейсы
+<p align="center">
+<img title="Telegram Notifications" src="images/screens/testCase.png">
+</p>
+
+### Дашборд
+
+<p align="center">
+<img title="Telegram Notifications" src="images/screens/dashboard.png">
 </p>
 
 ## <img width="4%" title="Selenoid" src="images/logo/Selenoid.svg"> Пример запуска теста в Selenoid

@@ -124,13 +124,13 @@ test
 
 ### Тест-кейсы
 <p align="center">
-<img title="Telegram Notifications" src="images/screens/testCase.png">
+<img title="testCase" src="images/screens/testCase.png">
 </p>
 
 ### Дашборд
 
 <p align="center">
-<img title="Telegram Notifications" src="images/screens/dashboard.png">
+<img title="dashboard" src="images/screens/dashboard.png">
 </p>
 
 ## <img width="4%" title="Selenoid" src="images/logo/Selenoid.svg"> Пример запуска теста в Selenoid

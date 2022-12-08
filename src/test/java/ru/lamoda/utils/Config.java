@@ -3,7 +3,7 @@ package ru.lamoda.utils;
 import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties
-@org.aeonbits.owner.Config.Sources({"classpath:properties/local.properties"})
+@org.aeonbits.owner.Config.Sources({"classpath:properties/remote.properties"})
 interface Config extends org.aeonbits.owner.Config {
     @Key("browserName")
     String getBrowserName();

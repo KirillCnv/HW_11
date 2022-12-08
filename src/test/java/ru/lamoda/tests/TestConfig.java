@@ -33,10 +33,6 @@ public class TestConfig {
         config.setConfiguration();
         Configuration.baseUrl = "https://www.lamoda.ru/";
 
-//        if (Provider.isRemote.equals("true")) {
-//            capabilities.setCapability("enableVNC", true);
-//            capabilities.setCapability("enableVideo", true);
-//        }
     }
 
     @BeforeEach
@@ -52,10 +48,9 @@ public class TestConfig {
         if ((Configuration.browser).equals("chrome")) {
             Attach.pageSource();
             Attach.browserConsoleLogs();
-        }
-        if (Provider.isRemote.equals("true")) {
             Attach.addVideo();
         }
+
         WebDriverRunner.closeWebDriver();
     }
 }

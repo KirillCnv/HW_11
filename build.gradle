@@ -24,9 +24,7 @@ def allureVersion = "2.19.0",
     javaFakerVersion = "1.0.2",
     jsoupVersion = "1.15.3"
 
-
-allure
-        {
+allure {
             report {
                 version.set(allureVersion)
             }
@@ -66,29 +64,19 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
-    systemProperty "file.encoding", "utf-8"
     systemProperties(System.getProperties())
-    if (System.getProperty("threads") != null) {
-        systemProperties += [
-                'junit.jupiter.execution.parallel.enabled'                 : true,
-                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
-                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
-                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
-                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
-        ]
-    }
+    useJUnitPlatform()
+
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
     }
+}
 
-
-    test {
-        useJUnitPlatform()
-        systemProperties(System.getProperties())
+task tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "Lamoda"
     }
-
-
 }

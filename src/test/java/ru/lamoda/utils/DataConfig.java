@@ -18,6 +18,4 @@ interface Config extends org.aeonbits.owner.Config {
     String getBaseURI();
     @Key("remoteUrl")
     String getRemoteUrl();
-    @Key("isRemote")
-    String getIsRemote();
 }

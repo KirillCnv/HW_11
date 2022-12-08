@@ -1,10 +1,9 @@
 package ru.lamoda.utils;
 
-
 import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties
-@org.aeonbits.owner.Config.Sources({"classpath:properties/remote.properties"})
+@org.aeonbits.owner.Config.Sources({"classpath:properties/local.properties"})
 interface Config extends org.aeonbits.owner.Config {
     @Key("browserName")
     String getBrowserName();
@@ -18,4 +17,6 @@ interface Config extends org.aeonbits.owner.Config {
     String getBaseURI();
     @Key("remoteUrl")
     String getRemoteUrl();
+    @Key("isRemote")
+    String getIsRemote();
 }

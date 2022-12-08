@@ -13,20 +13,20 @@ import static io.qameta.allure.Allure.step;
 @Severity(SeverityLevel.CRITICAL)
 @Link(value = "Testing", url = "https://www.lamoda.ru/")
 
-public class СontactlessDeliveryTest extends TestConfig{
+public class ContactlessDeliveryTest extends TestConfig {
 
     @DisplayName("Проверка страницы \"Бесконтактная доставка  с примеркой\"")
     @Tag("Lamoda")
     @Test
     void CheckDelivery() {
         step("Открыть главную страницу", () ->
-                сontactlessDeliveryPage.openPage()
+                contactlessDeliveryPage.openPage()
         );
         step("Кликнуть на кнопку \"Бесконтактная доставка  с примеркой\"", () ->
-                сontactlessDeliveryPage.clickButtonDelivery()
+                contactlessDeliveryPage.clickButtonDelivery()
         );
         step("Проверить, что открылось окно \"Бесконтактная доставка  с примеркой\"", () ->
-                сontactlessDeliveryPage.checkWindowDelivery()
+                contactlessDeliveryPage.checkWindowDelivery()
         );
     }
 }

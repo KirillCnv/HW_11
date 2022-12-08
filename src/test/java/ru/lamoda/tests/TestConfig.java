@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.lamoda.helpers.Attach;
 import ru.lamoda.pages.*;
-import ru.lamoda.utils.Provider;
+import ru.lamoda.utils.DriverProvider;
 
 
 public class TestConfig {
@@ -21,17 +21,23 @@ public class TestConfig {
     LamodaTestPage lamodaTestPage = new LamodaTestPage();
     ElementsHeaderPage elementsHeaderPage = new ElementsHeaderPage();
     CheckSearchLinePage checkSearchLinePage = new CheckSearchLinePage();
-    СontactlessDeliveryPage сontactlessDeliveryPage = new СontactlessDeliveryPage();
+    ContactlessDeliveryPage contactlessDeliveryPage = new ContactlessDeliveryPage();
     PayWhenYouWantPage payWhenYouWantPage = new PayWhenYouWantPage();
+
 
     @BeforeAll
     @Step("Browser configuration")
     static void configure() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         Configuration.browserCapabilities = capabilities;
-        Provider config = new Provider();
+        DriverProvider config = new DriverProvider();
         config.setConfiguration();
         Configuration.baseUrl = "https://www.lamoda.ru/";
+
+        if (DriverProvider.isRemote.equals("true")) {
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+        }
 
     }
 

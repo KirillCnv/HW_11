@@ -22,7 +22,6 @@ public class TestConfig {
     ElementsHeaderPage elementsHeaderPage = new ElementsHeaderPage();
     CheckSearchLinePage checkSearchLinePage = new CheckSearchLinePage();
     СontactlessDeliveryPage сontactlessDeliveryPage = new СontactlessDeliveryPage();
-
     PayWhenYouWantPage payWhenYouWantPage = new PayWhenYouWantPage();
 
     @BeforeAll
@@ -34,10 +33,10 @@ public class TestConfig {
         config.setConfiguration();
         Configuration.baseUrl = "https://www.lamoda.ru/";
 
-        if (Provider.isRemote.equals("true")) {
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
-        }
+//        if (Provider.isRemote.equals("true")) {
+//            capabilities.setCapability("enableVNC", true);
+//            capabilities.setCapability("enableVideo", true);
+//        }
     }
 
     @BeforeEach

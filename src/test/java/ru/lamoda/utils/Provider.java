@@ -4,10 +4,10 @@ import com.codeborne.selenide.Configuration;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class DriverProvider {
+public class Provider {
     public static String isRemote = "false";
 
-    public DriverProvider setConfiguration() {
+    public Provider setConfiguration() {
         Config config = ConfigFactory.create(Config.class, System.getProperties());
         Configuration.browser = config.getBrowserName();
         Configuration.browserVersion = config.getBrowserVersion();

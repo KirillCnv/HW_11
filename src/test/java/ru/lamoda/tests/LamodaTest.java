@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import ru.lamoda.pages.LamodaTestPage;
-import ru.lamoda.utils.TestConfig;
 
 import static io.qameta.allure.Allure.step;
 
@@ -16,8 +15,7 @@ import static io.qameta.allure.Allure.step;
 @Owner("KirillCnv")
 @Severity(SeverityLevel.CRITICAL)
 @Link(value = "Testing", url = "https://www.lamoda.ru/")
-@Tag("all")
-@DisplayName("Проверка сайта https://www.lamoda.ru/ (Jenkins)")
+
 
 
 public class LamodaTest extends TestConfig {
@@ -26,28 +24,28 @@ public class LamodaTest extends TestConfig {
 
 
     @DisplayName("Проверка Pop up выбора региона")
+    @Tag("Lamoda")
     @Test
     void examinationLocation() {
-        step("Открыть главную страницу", () -> {
-            lamodaTestPage.openPage();
-        });
+        step("Открыть главную страницу", () ->
+            lamodaTestPage.openPage()
+        );
 
-        step("Навести курсор на иконку региона", () -> {
-            lamodaTestPage.buttonRegion();
-        });
-        step("Проверить, что открылось окно \"Выберите регион или город\"", () -> {
-            lamodaTestPage.examinationWindowRegion();
-        });
-
+        step("Навести курсор на иконку региона", () ->
+            lamodaTestPage.buttonRegion()
+        );
+        step("Проверить, что открылось окно \"Выберите регион или город\"", () ->
+            lamodaTestPage.examinationWindowRegion()
+        );
     }
 
 
     @DisplayName("Проверка элементов Header")
     @Test
-    void examinationHeader() {
-        step("Открыть главную страницу", () -> {
-            lamodaTestPage.openPage();
-        });
+    void checkElementsHeader() {
+        step("Открыть главную страницу", () ->
+            lamodaTestPage.openPage()
+        );
         step("Проверить, что все элементы отоброжаются", () -> {
             lamodaTestPage.elementsHeader("Идеи");
             lamodaTestPage.elementsHeader("Новинки");
@@ -61,44 +59,43 @@ public class LamodaTest extends TestConfig {
     @DisplayName("Проверка поисковой строки")
     @ValueSource(strings = {"Футболка", "Джинсы", "Парка"})
     @ParameterizedTest(name = "Результаты поиска выдают \"{0}\"")
-    public void searchLamoda(String testData) {
-        step("Открыть главную страницу", () -> {
-            lamodaTestPage.openPage();
-        });
+    public void checkSearchLamoda(String testData) {
+        step("Открыть главную страницу", () ->
+            lamodaTestPage.openPage()
+        );
         step("Ввести {0}", () -> {
             lamodaTestPage.setValueSearch(testData);
             lamodaTestPage.parameterizedClickButton();
         });
-        step("Проверить результаты поиска", () -> {
-            lamodaTestPage.checkResult(testData);
-        });
+        step("Проверить результаты поиска", () ->
+            lamodaTestPage.checkResult(testData)
+        );
 
     }
 
-
     @DisplayName("Проверка страницы \"Бесконтактная доставка  с примеркой\"")
     @Test
-    void examinationDelivery() {
-        step("Открыть главную страницу", () -> {
-            lamodaTestPage.openPage();
-        });
-        step("Кликнуть на кнопку \"Бесконтактная доставка  с примеркой\"", () -> {
-            lamodaTestPage.buttonDelivery();
-        });
-        step("Проверить, что открылось окно \"Бесконтактная доставка  с примеркой\"", () -> {
-            lamodaTestPage.windowDelivery();
-        });
+    void CheckDelivery() {
+        step("Открыть главную страницу", () ->
+            lamodaTestPage.openPage()
+        );
+        step("Кликнуть на кнопку \"Бесконтактная доставка  с примеркой\"", () ->
+            lamodaTestPage.buttonDelivery()
+        );
+        step("Проверить, что открылось окно \"Бесконтактная доставка  с примеркой\"", () ->
+            lamodaTestPage.windowDelivery()
+        );
     }
 
     @DisplayName("Проверка страницы \"Платите когда хотите!\"")
     @Test
-    void examinationPay() {
-        step("Открыть главную страницу", () -> {
-            lamodaTestPage.openPage();
-        });
-        step("Кликнуть на кнопку \"Платите когда хотите!\"", () -> {
-            lamodaTestPage.buttonPay();
-        });
+    void checkPagePay() {
+        step("Открыть главную страницу", () ->
+            lamodaTestPage.openPage()
+        );
+        step("Кликнуть на кнопку \"Платите когда хотите!\"", () ->
+            lamodaTestPage.buttonPay()
+        );
         step("Проверить, что открылось окно \"Платитекогда хотите!\"", () -> {
             lamodaTestPage.windowPay("\"Оплата \n онлайн\"");
             lamodaTestPage.windowPay("При получении заказа ");
@@ -108,13 +105,13 @@ public class LamodaTest extends TestConfig {
 
     @DisplayName("Проверка страницы \"Платите когда хотите!\" FAIL ")
     @Test
-    void examinationPayFail() {
-        step("Открыть главную страницу", () -> {
-            lamodaTestPage.openPage();
-        });
-        step("Кликнуть на кнопку \"Платите когда хотите!\"", () -> {
-            lamodaTestPage.buttonPay();
-        });
+    void checkPagePayFail() {
+        step("Открыть главную страницу", () ->
+            lamodaTestPage.openPage()
+        );
+        step("Кликнуть на кнопку \"Платите когда хотите!\"", () ->
+            lamodaTestPage.buttonPay()
+        );
         step("Проверить, что открылось окно \"Платитекогда хотите!\"", () -> {
             lamodaTestPage.windowPay("Не Оплата \n онлайн");
             lamodaTestPage.windowPay("Не получении заказа ");
@@ -122,12 +119,3 @@ public class LamodaTest extends TestConfig {
         });
     }
 }
-
-
-
-
-
-
-
-
-

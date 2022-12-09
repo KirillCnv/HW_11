@@ -36,6 +36,7 @@ public class TestConfig{
         Configuration.browserVersion = browserVersion;
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.browserSize = browserResolution;
+        Configuration.baseUrl = config.getBaseUrl();
 
         if (config.getRemote()){
             String selenoidLogin = config.getSelenoidLogin(),

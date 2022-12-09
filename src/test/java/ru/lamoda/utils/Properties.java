@@ -31,4 +31,5 @@ public interface Properties extends org.aeonbits.owner.Config {
 
     @Key("selenoidPassword")
     String getSelenoidPassword();
+
 }

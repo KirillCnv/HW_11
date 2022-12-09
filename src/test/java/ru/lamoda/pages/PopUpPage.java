@@ -8,23 +8,22 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class PopUpPage {
 
-    private SelenideElement
-            buttonRegion = $("._message_kn91o_11"),
-            windowRegion = $("._rightCol_rq1gl_8").shouldHave(Condition.text("Где вы находитесь?"));
+    private SelenideElement buttonRegion = $("._message_kn91o_11"),
+            windowRegion = $("._rightCol_rq1gl_8");
 
     public PopUpPage openPage() {
         open("/");
-//        executeJavaScript("$('footer').remove()");
-//        executeJavaScript("$('#fixedban').remove()");
-
         return this;
     }
 
-    public void clickButtonRegion() {
+    public PopUpPage clickButtonRegion() {
         buttonRegion.click();
-    }
 
-    public void checkWindowRegion() {
-       windowRegion.shouldHave(Condition.text("Где вы находитесь?"));
+        return this;
+    }
+    public PopUpPage checkWindowRegion() {
+        windowRegion.shouldHave(Condition.text("Где вы находитесь?"));
+
+        return this;
     }
 }

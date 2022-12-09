@@ -2,7 +2,6 @@ package ru.lamoda.tests;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -15,19 +14,17 @@ import static io.qameta.allure.Allure.step;
 
 public class PopUpTest extends TestConfig {
 
-    @DisplayName("Проверка Pop up выбора региона")
-    @Tag("Lamoda")
     @Test
+    @DisplayName("Проверка окна выбора локации")
     void checkLocation() {
         step("Открыть главную страницу", () ->
                 popUpPage.openPage()
         );
-
         step("Навести курсор на иконку региона", () ->
-                popUpPage.clickButtonRegion()
+            popUpPage.clickButtonRegion()
         );
         step("Проверить, что открылось окно \"Выберите регион или город\"", () ->
-                popUpPage.checkWindowRegion()
+            popUpPage.checkWindowRegion()
         );
     }
 }

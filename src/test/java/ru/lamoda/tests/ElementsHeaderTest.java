@@ -5,7 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
+
 @Feature("Проверка сайта https://www.lamoda.ru/")
 @Story("Проверка сайта")
 @Owner("KirillCnv")
@@ -18,9 +20,10 @@ public class ElementsHeaderTest extends TestConfig {
     @Tag("Lamoda")
     @Test
     void checkElementsHeader() {
-        step("Открыть главную страницу", () ->
-                elementsHeaderPage.openPage()
-        );
+        step("Открыть главную страницу", () -> {
+            open("https://www.lamoda.ru/");
+
+        });
         step("Проверить, что все элементы отоброжаются", () -> {
             elementsHeaderPage.elementsHeader("Идеи");
             elementsHeaderPage.elementsHeader("Новинки");

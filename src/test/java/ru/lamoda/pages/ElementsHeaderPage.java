@@ -11,7 +11,6 @@ public class ElementsHeaderPage {
     private SelenideElement
             elements =  $("._root_1416b_2");
 
-
     public ElementsHeaderPage openPage() {
         open("/");
 //        executeJavaScript("$('footer').remove()");

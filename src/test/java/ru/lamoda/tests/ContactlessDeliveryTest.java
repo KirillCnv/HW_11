@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 @Feature("Проверка сайта https://www.lamoda.ru/")
@@ -20,7 +21,7 @@ public class ContactlessDeliveryTest extends TestConfig {
     @Test
     void CheckDelivery() {
         step("Открыть главную страницу", () ->
-                contactlessDeliveryPage.openPage()
+                open("/")
         );
         step("Кликнуть на кнопку \"Бесконтактная доставка  с примеркой\"", () ->
                 contactlessDeliveryPage.clickButtonDelivery()

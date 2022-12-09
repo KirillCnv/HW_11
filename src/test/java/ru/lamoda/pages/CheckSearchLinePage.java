@@ -28,7 +28,7 @@ public class CheckSearchLinePage {
     }
 
     public void searchClickButton() {
-        $("button[class*=\"_button_xf7ng_11\"]").click();
+        searchButton.click();
     }
 
     public CheckSearchLinePage checkResult(String value) {

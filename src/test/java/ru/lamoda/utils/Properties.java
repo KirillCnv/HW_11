@@ -1,7 +1,7 @@
 package ru.lamoda.utils;
 
 @org.aeonbits.owner.Config.Sources({
-        "classpath:properties/local.properties"
+        "classpath:properties/prop.properties"
 })
 public interface Properties extends org.aeonbits.owner.Config {
 
@@ -15,7 +15,7 @@ public interface Properties extends org.aeonbits.owner.Config {
     String getBrowserVersion();
 
     @Key("baseUrl")
-    @DefaultValue("https://unicom24.ru/")
+    @DefaultValue("https://www.lamoda.ru/")
     String getBaseUrl();
 
     @Key("browserSize")
